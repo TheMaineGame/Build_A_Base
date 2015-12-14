@@ -6,7 +6,7 @@
 	<ProductVersion>10.0.20506</ProductVersion>
 	<SchemaVersion>2.0</SchemaVersion>
 	<RootNamespace></RootNamespace>
-	<ProjectGuid>{36ED1CE3-772E-F3DE-3FE9-21977164E909}</ProjectGuid>
+	<ProjectGuid>{F259ACFB-3866-A212-2822-15A3F31C6E16}</ProjectGuid>
 	<OutputType>Library</OutputType>
 	<AppDesignerFolder>Properties</AppDesignerFolder>
 	<AssemblyName>Assembly-CSharp</AssemblyName>
@@ -46,6 +46,18 @@
   </ItemGroup>
   <ItemGroup>
      <Compile Include="Assets\CameraControll.cs" />
+     <Compile Include="Assets\Scripts\CameraMover.cs" />
+     <Compile Include="Assets\Scripts\HiScoreManager.cs" />
+     <Compile Include="Assets\Scripts\Spinner.cs" />
+     <Compile Include="Assets\Scripts\Turn Left.cs" />
+     <Compile Include="Assets\Scripts\Undo Feature\Interfaces\IUndoGroup.cs" />
+     <Compile Include="Assets\Scripts\Undo Feature\Interfaces\IUndoable.cs" />
+     <Compile Include="Assets\Scripts\Undo Feature\UndoGroup.cs" />
+     <Compile Include="Assets\Scripts\Undo Feature\UndoableActions\CreationAction.cs" />
+     <Compile Include="Assets\Scripts\Undo Feature\UndoableActions\DestructionAction.cs" />
+     <Compile Include="Assets\Scripts\Undo Feature\UndoableActions\RotationUndoableAction.cs" />
+     <Compile Include="Assets\Scripts\Undo Feature\UndoableActions\TranslationUndoableAction.cs" />
+     <Compile Include="Assets\Scripts\Undo Feature\UndoableActions\UndoableAction.cs" />
  <Reference Include="UnityEngine.Advertisements">
  <HintPath>C:/Program Files/Unity/Editor/Data/UnityExtensions/Unity/Advertisements/UnityEngine.Advertisements.dll</HintPath>
  </Reference>
