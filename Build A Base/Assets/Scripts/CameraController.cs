@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class CameraControll : MonoBehaviour {
+public class CameraController : MonoBehaviour {
 
     [SerializeField]
     GameObject cameraObject;
