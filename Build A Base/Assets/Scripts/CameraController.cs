@@ -23,28 +23,28 @@ public class CameraController : MonoBehaviour {
     /// Higher level means "closer".
     /// </summary>
     [SerializeField]
-    float m_maxZoom;
+    float m_maxZoom = 9;
 
     /// <summary>
     /// Minimum zoom level of the camera.
     /// Lower level means "further".
     /// </summary>
     [SerializeField]
-    float m_minZoom;
+    float m_minZoom = 2;
 
     /// <summary>
     /// The speed at which the camera zooms. Think of this as
     /// "sensitivity" for the mouse wheel.
     /// </summary>
     [SerializeField]
-    float m_zoomSpeed;
+    float m_zoomSpeed = 1;
 
     /// <summary>
     /// The speed at which the camera rotates. A higher value
     /// naturally means more "rigid" rotations.
     /// </summary>
     [SerializeField]
-    float m_rotateSpeed;
+    float m_rotateSpeed = 100;
 
     /// <summary>
     /// Movement speed of the camera.
@@ -73,7 +73,7 @@ public class CameraController : MonoBehaviour {
     /// May need to be fine tuned for varying levels of zoom.
     /// </summary>
     [SerializeField]
-    float m_moveZoomMultiplier = 0.002f;
+    float m_moveZoomMultiplier = 0.00362f;
 
     /// <summary>
     /// Current rotation of the camera.
@@ -116,6 +116,9 @@ public class CameraController : MonoBehaviour {
     /// </summary>
     float m_currentZoom;
 
+    [SerializeField]
+    bool debug;
+
     void Start()
     {
         m_currentZoom = m_camera.orthographicSize;
@@ -151,10 +154,12 @@ public class CameraController : MonoBehaviour {
         {
             float deltaX = Input.mousePosition.x - m_lastMouseX;
             float deltaY = Input.mousePosition.y - m_lastMouseY;
+            if (debug) Debug.Log ("Delta X: " + deltaX + "\nDelta Y: " + deltaY + "\nCurrentPosition: " + m_cameraPivot.transform.position);
             //fromPos = cameraObject.transform.localPosition;
             //toPos = transform.right * deltaX + transform.forward * deltaY + toPos;
             //cameraObject.transform.localPosition = Vector3.Lerp(fromPos, toPos, Time.deltaTime * moveSpeed);
-            m_cameraPivot.transform.position = transform.forward * (deltaY * MoveSpeed) + transform.right * (deltaX * MoveSpeed) + m_camera.transform.position;
+            m_cameraPivot.transform.position = transform.forward * (deltaY * MoveSpeed) + transform.right * (deltaX * MoveSpeed) + m_cameraPivot.transform.position;
+            if (debug) Debug.Log ("Addition to position: " + (transform.forward * (deltaY * MoveSpeed) + transform.right * (deltaX * MoveSpeed)));
             m_lastMouseX = Input.mousePosition.x;
             m_lastMouseY = Input.mousePosition.y;
         }
