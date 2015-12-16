@@ -4,79 +4,79 @@ using System.Collections;
 public class CameraController : MonoBehaviour {
 
     [SerializeField]
-    GameObject cameraObject;
+    GameObject m_cameraPivot;
 
     [SerializeField]
-    Camera actuallCamera;
+    Camera m_camera;
 
     [SerializeField]
-    float maxZoom;
+    float m_maxZoom;
 
     [SerializeField]
-    float minZoom;
+    float m_minZoom;
 
     [SerializeField]
-    float zoomSpeed;
+    float m_zoomSpeed;
 
     [SerializeField]
-    float rotateSpeed;
+    float m_rotateSpeed;
 
     [SerializeField]
-    float moveSpeed;
+    float m_moveSpeed;
 
     [SerializeField]
-    float moveZoomMultiplier = 0.002f;
+    float m_moveZoomMultiplier = 0.002f;
 
-    Quaternion fromRotation;
-    Quaternion toRotation;
+    Quaternion m_fromRotation;
+    Quaternion m_toRotation;
 
-    Vector3 fromPos;
-    Vector3 toPos;
+    Vector3 m_fromPos;
+    Vector3 m_toPos;
 
-    float yDeg;
-    float lastMouseX;
-    float lastMouseY;
+    float m_yDeg;
+    float m_lastMouseX;
+    float m_lastMouseY;
 
-    float currentZoom;
+    float m_currentZoom;
 
     void Start()
     {
-        currentZoom = actuallCamera.orthographicSize;
+        m_currentZoom = m_camera.orthographicSize;
     }
 
     void Update()
     {
 
-        moveSpeed = moveZoomMultiplier * -currentZoom;
+        m_moveSpeed = m_moveZoomMultiplier * -m_currentZoom;
 
-        actuallCamera.orthographicSize = currentZoom;
+        m_camera.orthographicSize = m_currentZoom;
 
-        currentZoom -= (Input.GetAxis("Mouse ScrollWheel") * zoomSpeed);
+        m_currentZoom -= (Input.GetAxis("Mouse ScrollWheel") * m_zoomSpeed);
 
-        currentZoom = Mathf.Clamp(currentZoom, minZoom, maxZoom);
+        m_currentZoom = Mathf.Clamp(m_currentZoom, m_minZoom, m_maxZoom);
 
         if (Input.GetMouseButton(1))
         {
-            yDeg += Input.GetAxis("Mouse X") * Time.deltaTime * rotateSpeed;
-            fromRotation = cameraObject.transform.rotation;
-            toRotation = Quaternion.Euler(0, yDeg, 0);
-            cameraObject.transform.rotation = Quaternion.Lerp(fromRotation, toRotation, Time.deltaTime * rotateSpeed);
+            m_yDeg += Input.GetAxis("Mouse X") * Time.deltaTime * m_rotateSpeed;
+            m_fromRotation = m_cameraPivot.transform.rotation;
+            m_toRotation = Quaternion.Euler(0, m_yDeg, 0);
+            m_cameraPivot.transform.rotation = Quaternion.Lerp(m_fromRotation, m_toRotation, Time.deltaTime * m_rotateSpeed);
         }
         if (Input.GetMouseButtonDown(0))
         {
-            lastMouseX = Input.mousePosition.x;
-            lastMouseY = Input.mousePosition.y;
+            m_lastMouseX = Input.mousePosition.x;
+            m_lastMouseY = Input.mousePosition.y;
         }
         if (Input.GetMouseButton(0))
         {
-            float deltaX = Input.mousePosition.x - lastMouseX;
-            float deltaY = Input.mousePosition.y - lastMouseY;
+            float deltaX = Input.mousePosition.x - m_lastMouseX;
+            float deltaY = Input.mousePosition.y - m_lastMouseY;
             //fromPos = cameraObject.transform.localPosition;
             //toPos = transform.right * deltaX + transform.forward * deltaY + toPos;
             //cameraObject.transform.localPosition = Vector3.Lerp(fromPos, toPos, Time.deltaTime * moveSpeed);
-            cameraObject.transform.position = transform.forward * (deltaY * moveSpeed) + transform.right * (deltaX * moveSpeed) + cameraObject.transform.position;
-            lastMouseX = Input.mousePosition.x;
-            lastMouseY = Input.mousePosition.y;
+            m_cameraPivot.transform.position = transform.forward * (deltaY * m_moveSpeed) + transform.right * (deltaX * m_moveSpeed) + cameraObject.transform.position;
+            m_lastMouseX = Input.mousePosition.x;
+            m_lastMouseY = Input.mousePosition.y;
         }
     }
 
