@@ -10,19 +10,19 @@ public class CameraController : MonoBehaviour {
     Camera m_camera;
 
     [SerializeField]
-    float m_maxZoom;
+    float m_maxZoom = 9;
 
     [SerializeField]
-    float m_minZoom;
+    float m_minZoom = 2;
 
     [SerializeField]
-    float m_zoomSpeed;
+    float m_zoomSpeed = 3;
 
     [SerializeField]
-    float m_rotateSpeed;
+    float m_rotateSpeed = 200;
 
     [SerializeField]
-    float m_moveSpeed;
+    float m_moveSpeed = -0.01f;
 
     [SerializeField]
     float m_moveZoomMultiplier = 0.002f;
@@ -74,7 +74,7 @@ public class CameraController : MonoBehaviour {
             //fromPos = cameraObject.transform.localPosition;
             //toPos = transform.right * deltaX + transform.forward * deltaY + toPos;
             //cameraObject.transform.localPosition = Vector3.Lerp(fromPos, toPos, Time.deltaTime * moveSpeed);
-            m_cameraPivot.transform.position = transform.forward * (deltaY * m_moveSpeed) + transform.right * (deltaX * m_moveSpeed) + cameraObject.transform.position;
+            m_cameraPivot.transform.position = transform.forward * (deltaY * m_moveSpeed) + transform.right * (deltaX * m_moveSpeed) + m_camera.transform.position;
             m_lastMouseX = Input.mousePosition.x;
             m_lastMouseY = Input.mousePosition.y;
         }
