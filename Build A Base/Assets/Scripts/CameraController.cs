@@ -74,7 +74,7 @@ public class CameraController : MonoBehaviour {
             //fromPos = cameraObject.transform.localPosition;
             //toPos = transform.right * deltaX + transform.forward * deltaY + toPos;
             //cameraObject.transform.localPosition = Vector3.Lerp(fromPos, toPos, Time.deltaTime * moveSpeed);
-            m_cameraPivot.transform.position = transform.forward * (deltaY * m_moveSpeed) + transform.right * (deltaX * m_moveSpeed) + m_camera.transform.position;
+            m_cameraPivot.transform.position = transform.forward * (deltaY * m_moveSpeed) + transform.right * (deltaX * m_moveSpeed) + m_cameraPivot.transform.position;
             m_lastMouseX = Input.mousePosition.x;
             m_lastMouseY = Input.mousePosition.y;
         }
