@@ -57,6 +57,7 @@
      <Compile Include="Assets\Scripts\Undo Feature\UndoableActions\RotationUndoableAction.cs" />
      <Compile Include="Assets\Scripts\Undo Feature\UndoableActions\TranslationUndoableAction.cs" />
      <Compile Include="Assets\Scripts\Undo Feature\UndoableActions\UndoableAction.cs" />
+     <Compile Include="Assets\TestAnimationActivator.cs" />
  <Reference Include="UnityEngine.UI">
  <HintPath>C:/Program Files/Unity/Editor/Data/UnityExtensions/Unity/GUISystem/UnityEngine.UI.dll</HintPath>
  </Reference>
