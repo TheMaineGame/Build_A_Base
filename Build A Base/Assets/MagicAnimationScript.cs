@@ -12,4 +12,16 @@ public class MagicAnimationScript : MonoBehaviour {
         CameraAnimator.SetTrigger("DiveIn");
         CanvasAnimator.SetTrigger("GoClicked");
     }
+
+    public void TriggerQuit()
+    {
+        CanvasAnimator.SetTrigger("QuitClicked");
+        StartCoroutine(QuitCoroutine());
+    }
+
+    IEnumerator QuitCoroutine()
+    {
+        yield return new WaitForSeconds(3);
+        Application.Quit();
+    }
 }
