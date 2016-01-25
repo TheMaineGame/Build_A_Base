@@ -6,12 +6,16 @@ public class MagicAnimationScript : MonoBehaviour {
 
     [SerializeField] Animator CameraAnimator;
     [SerializeField] Animator CanvasAnimator;
+    [SerializeField] Animator filler;
+    [SerializeField] GameObject FakeLoadingScreen;
 
+    int Count;
 
     public void TriggerStart()
     {
         CameraAnimator.SetTrigger("DiveIn");
         CanvasAnimator.SetTrigger("GoClicked");
+        StartCoroutine("FakeTheLoadingScreen");
     }
 
     public void TriggerQuit()
@@ -28,7 +32,15 @@ public class MagicAnimationScript : MonoBehaviour {
 
     IEnumerator FakeTheLoadingScreen()
     {
-        yield return new WaitForSeconds(5);
+        StartCoroutine("TriggerLoadBar");
+        yield return new WaitForSeconds(8);
         SceneManager.LoadScene(1);
+    }
+
+    IEnumerator TriggerLoadBar()
+    {
+        yield return new WaitForSeconds(3.5f);
+        FakeLoadingScreen.SetActive(true);
+        filler.SetTrigger("FadeIn");
     }
 }
