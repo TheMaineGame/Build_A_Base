@@ -1,6 +1,10 @@
 <<<<<<< HEAD:ProjectSettings/ProjectVersion.txt
+<<<<<<< HEAD:ProjectSettings/ProjectVersion.txt
 m_EditorVersion: 5.1.2f1
 =======
 m_EditorVersion: 5.3.1f1
 >>>>>>> 7df3db5d19b78bdf3ae59707fed01261baf2bc63:Build A Base/ProjectSettings/ProjectVersion.txt
+=======
+m_EditorVersion: 5.2.2f1
+>>>>>>> parent of 96ee75e... moved everything into its correct place:Build A Base/ProjectSettings/ProjectVersion.txt
 m_StandardAssetsVersion: 0
