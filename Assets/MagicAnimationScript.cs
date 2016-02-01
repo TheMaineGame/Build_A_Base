@@ -4,10 +4,14 @@ using System.Collections;
 
 public class MagicAnimationScript : MonoBehaviour {
 
-    [SerializeField] Animator CameraAnimator;
-    [SerializeField] Animator CanvasAnimator;
-    [SerializeField] Animator filler;
-    [SerializeField] GameObject FakeLoadingScreen;
+    [SerializeField]
+	private Animator CameraAnimator;
+    [SerializeField]
+	private Animator CanvasAnimator;
+    [SerializeField]
+	private Animator filler;
+    [SerializeField]
+	private GameObject FakeLoadingScreen;
 
     int Count;
 
@@ -34,7 +38,7 @@ public class MagicAnimationScript : MonoBehaviour {
     {
         StartCoroutine("TriggerLoadBar");
         yield return new WaitForSeconds(8);
-        SceneManager.LoadScene(1);
+		SceneManager.LoadScene (1);
     }
 
     IEnumerator TriggerLoadBar()
