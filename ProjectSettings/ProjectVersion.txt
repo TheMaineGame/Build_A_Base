@@ -1,2 +1,6 @@
+<<<<<<< HEAD:ProjectSettings/ProjectVersion.txt
 m_EditorVersion: 5.1.2f1
+=======
+m_EditorVersion: 5.3.1f1
+>>>>>>> 0b813c673cf693ee89497b4cd8f0d1475429eb0b:Build A Base/ProjectSettings/ProjectVersion.txt
 m_StandardAssetsVersion: 0
