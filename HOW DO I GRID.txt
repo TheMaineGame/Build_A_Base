@@ -1,0 +1,5 @@
+* Grid system
+
+* How big is a part?
+* how big is a tile in general?
+* What is the "step"?
