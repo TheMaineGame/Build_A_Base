@@ -7,9 +7,11 @@ public class InGameButtonManager : MonoBehaviour {
     [SerializeField] AudioMixer Mixer;
     [SerializeField] GameObject EndCanvas;
     [SerializeField] GameObject WinCanvas;
+    [SerializeField] GameObject UIButtons;
 
 	public void DisplayFinalCanvas()
     {
+        UIButtons.SetActive(false);
         EndCanvas.SetActive(true);
         WinCanvas.SetActive(false);
         Time.timeScale = 0.01f;
