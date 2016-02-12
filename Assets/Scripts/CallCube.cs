@@ -7,6 +7,7 @@ public class CallCube : MonoBehaviour
 
 	public void CubeCall () 
 	{
-		m_livingQuarters.SetActive (true);
-	}
+        GameObject poop = Instantiate(m_livingQuarters);
+        poop.transform.position = new Vector3(2.5f, 0f, -4.5f);
+    }
 }
