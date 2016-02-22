@@ -13,6 +13,12 @@ public class CameraControll : MonoBehaviour {
 
     GameObject cameraObject;
 
+    [SerializeField]
+    GameObject actuallyCamera;
+
+    [SerializeField]
+    GameObject camHolder;
+
     GameObject actuallCameraObject;
 
     Camera actuallCamera;
@@ -24,6 +30,16 @@ public class CameraControll : MonoBehaviour {
     GameObject focusPoint;
 
     [SerializeField]
+    Transform camPos;
+
+    [SerializeField]
+    float dragSpeed;
+
+    private Vector3 panOrigin;
+
+    private Vector3 dragOrigin;
+
+    [SerializeField]
     float maxZoom;
 
     [SerializeField]
@@ -32,8 +48,8 @@ public class CameraControll : MonoBehaviour {
     [SerializeField]
     float zoomSpeed;
 
-    [Range (1,10)]
-    public float rotateSpeed;
+    [SerializeField]
+    float rotateSpeed;
 
     float curZoom;
 
@@ -64,8 +80,16 @@ public class CameraControll : MonoBehaviour {
 
 	bool canDrag = false;
 
+    bool dragging;
+
+    float width;
+    float height;
+    float boundary = 1;
+
     void Start()
 	{
+        width = Screen.width;
+        height = Screen.height;
         focusPoint = GameObject.FindGameObjectWithTag("FocusPoint");
         transform.parent.position = new Vector3(0, 0, 0);
         panInt = (int)panButton;
@@ -79,11 +103,15 @@ public class CameraControll : MonoBehaviour {
         {
             throw new System.Exception("Buttons should not be the same");
         }
+
         //groundPlane = Plane (groundNormal, groundPoint);
     }
 
     void Update()
 	{
+        float xMouse = Input.mousePosition.x;
+        float yMouse = Input.mousePosition.y;
+
 		if (Input.GetMouseButtonDown(panInt) || Input.GetMouseButtonDown(rotateInt)) {
 			RaycastHit hit;
 			Ray ray = Camera.main.ScreenPointToRay (Input.mousePosition);
@@ -133,23 +161,38 @@ public class CameraControll : MonoBehaviour {
 		if (canDrag) {
 			if (Input.GetMouseButton (rotateInt)) {
 				yDeg += Input.GetAxis ("Mouse X") * Time.deltaTime * actuallRotate;
-				fromRotation = cameraObject.transform.rotation;
+				fromRotation = camHolder.transform.rotation;
 				toRotation = Quaternion.Euler (0, yDeg, 0);
-				cameraObject.transform.rotation = Quaternion.Lerp (fromRotation, toRotation, Time.deltaTime * actuallRotate);
+				camPos.rotation = Quaternion.Lerp (fromRotation, toRotation, Time.deltaTime * actuallRotate);
 			}
-		
-			if (Input.GetMouseButtonDown (panInt)) {
-				lastMouseX = Input.mousePosition.x;
-				lastMouseY = Input.mousePosition.y;
-			}
-			if (Input.GetMouseButton (panInt)) {
-				float deltaX = Input.mousePosition.x - lastMouseX;
-				float deltaY = Input.mousePosition.y - lastMouseY;
-				cameraObject.transform.position = transform.forward * (deltaY * moveSpeed) + transform.right * (deltaX * moveSpeed) + cameraObject.transform.position;
-				lastMouseX = Input.mousePosition.x;
-				lastMouseY = Input.mousePosition.y;
-			}
-		}
+
+            //if (Input.GetMouseButtonDown(panInt))
+            //{
+            //  dragOrigin = Input.mousePosition;
+            //}
+
+            //if (Input.GetMouseButton(panInt))
+            //{
+            //    Vector3 delta = Input.mousePosition - dragOrigin;
+            //    transform.Translate(delta.x * dragSpeed, 0 ,delta.z * dragSpeed, 0);
+            //    dragOrigin = Input.mousePosition;
+            //}
+
+            //original Panning
+            if (Input.GetMouseButtonDown(panInt))
+            {
+                lastMouseX = Input.mousePosition.x;
+                lastMouseY = Input.mousePosition.y;
+            }
+            if (Input.GetMouseButton(panInt))
+            {
+                float deltaX = Input.mousePosition.x - lastMouseX;
+                float deltaY = Input.mousePosition.y - lastMouseY;
+                cameraObject.transform.position = transform.forward * (deltaY * moveSpeed) + transform.right * (deltaX * moveSpeed) + cameraObject.transform.position;
+                lastMouseX = Input.mousePosition.x;
+                lastMouseY = Input.mousePosition.y;
+            }
+        }
     }
 
 	void CameraModeCheck(){
