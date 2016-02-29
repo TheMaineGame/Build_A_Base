@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 
 namespace MaineGame.Utils.Undo {
+    [CreateAssetMenu(fileName = "Undo Manager", menuName = "Undo Manager", order = 201)]
     public class UndoGroup : ScriptableObject, IUndoGroup<UndoableAction> {
         /// <summary>
         /// Says whether the UndoGroup can be redone.
