@@ -14,13 +14,15 @@ namespace MaineGame.Utils.Undo {
         }
 
         public void OnEndDrag (PointerEventData eventData) {
-            m_manager.Register (
-                new TranslationUndoableAction (
-                    gameObject,
-                    beforeDragPosition,
-                    transform.position
-                    )
-                );
+            if (transform.position != beforeDragPosition) {
+                m_manager.Register (
+                    new TranslationUndoableAction (
+                        gameObject,
+                        beforeDragPosition,
+                        transform.position
+                        )
+                    );
+            }
         }
 
         // Use this for initialization
