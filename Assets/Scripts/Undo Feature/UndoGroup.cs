@@ -1,8 +1,9 @@
-﻿using System;
+﻿using UnityEngine;
+using System;
 using System.Collections.Generic;
 
-namespace MaineGame.Utils {
-    class UndoGroup : IUndoGroup<UndoableAction> {
+namespace MaineGame.Utils.Undo {
+    public class UndoGroup : ScriptableObject, IUndoGroup<UndoableAction> {
         /// <summary>
         /// Says whether the UndoGroup can be redone.
         /// Trying to call Redo() while this is false
