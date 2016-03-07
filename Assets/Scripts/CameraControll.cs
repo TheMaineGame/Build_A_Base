@@ -91,7 +91,7 @@ public class CameraControll : MonoBehaviour {
         width = Screen.width;
         height = Screen.height;
         focusPoint = GameObject.FindGameObjectWithTag("FocusPoint");
-        transform.parent.position = new Vector3(0, 0, 0);
+        camHolder.transform.position = new Vector3(0, 0, 0);
         panInt = (int)panButton;
         rotateInt = (int)rotateButton;
         cameraObject = this.gameObject;
