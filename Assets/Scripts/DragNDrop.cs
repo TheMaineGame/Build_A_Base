@@ -3,6 +3,9 @@ using UnityEngine.EventSystems;
 using System.Collections;
 using System;
 
+/// <summary>
+/// Used to drag and drop the buildings.
+/// </summary>
 public class DragNDrop : MonoBehaviour, IDragHandler {
     [SerializeField]
     LayerMask floor;
