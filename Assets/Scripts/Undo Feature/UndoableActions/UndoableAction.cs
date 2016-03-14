@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace MaineGame.Utils {
+namespace MaineGame.Utils.Undo {
     /// <summary>
     /// Represents a single undoable action of indeterminate type.
     /// Mostly useful for being overridden for more specific actions.
