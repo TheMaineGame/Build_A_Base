@@ -1,4 +1,4 @@
-﻿namespace MaineGame.Utils {
+﻿namespace MaineGame.Utils.Undo {
     public interface IUndoable {
         /// <summary>
         /// Undoes the previous action.

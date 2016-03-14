@@ -1,4 +1,4 @@
-﻿namespace MaineGame.Utils {
+﻿namespace MaineGame.Utils.Undo {
     public interface IUndoGroup<U> : IUndoable where U : IUndoable {
         /// <summary>
         /// Registers an IUndoable into the UndoGroup
