@@ -37,7 +37,7 @@ public class MagicAnimationScript : MonoBehaviour {
     IEnumerator FakeTheLoadingScreen()
     {
         StartCoroutine("TriggerLoadBar");
-        yield return new WaitForSeconds(8);
+        yield return new WaitForSeconds(6);
 		SceneManager.LoadScene (1);
     }
 
