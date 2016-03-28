@@ -18,14 +18,20 @@ public class BuildingSpawner : MonoBehaviour, IPointerDownHandler, IPointerUpHan
 	}
 	public void OnPointerDown(PointerEventData eventData)
 	{
+		Debug.Log ("PointerDown");
 		pointerDown = true;
 	}
 	public void OnPointerUp(PointerEventData eventData)
 	{
+		Debug.Log ("PointerUP");
 		pointerDown = false;
 	}
 	public void OnPointerExit(PointerEventData eventData)
 	{
-		pointerDown = false;
+		if (pointerDown) {
+			Debug.Log ("PointerExit");
+			eventData.selectedObject = GameObject.Instantiate (building);
+			pointerDown = false;
+		}
 	}
 }
